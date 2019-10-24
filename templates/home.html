@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Угадай число{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1>Игра "Угадай число"</h1>
+        </div>
+        {% if form %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Отправить" />
+            </form>
+        {% endif %}
+        <div class="message">
+            {% if number_msg %}
+                <p class="font-weight-bold">{{ number_msg }}</p>
+            {% endif %}
+
+            {% if info_msg %}
+                <p class="font-weight-light">{{ info_msg }}</p>
+            {% endif %}
+
+            {% if main_msg %}
+                <p class="font-weight-bold text-primary">{{ main_msg }}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
